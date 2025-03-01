@@ -4,24 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Click-Describe: Multimodal Grounding and Tracking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        canvas {
-            border: 1px solid black;
-            cursor: crosshair;
-        }
+        body { text-align: center; }
+        .hero { background-color: #f5f5f5; padding: 2rem 1rem; }
+        .hero-title { font-size: 2rem; font-weight: bold; }
+        .hero-subtitle { font-size: 1.2rem; }
+        .section { padding: 3rem 1rem; }
+        .container img { max-width: 100%; height: auto; }
     </style>
 </head>
 <body>
-    <h1>Click-Describe: Multimodal Grounding and Tracking for Aerial Objects</h1>
-    <p>Click on an object in the image to describe and track it.</p>
-    <input type="file" id="upload" accept="image/*">
-    <br><br>
-    <canvas id="canvas"></canvas>
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="hero-title">Click-Describe: Multimodal Grounding and Tracking for Aerial Objects</h1>
+                <p class="hero-subtitle">A research project exploring multimodal object grounding and tracking.</p>
+                <a class="button is-primary" href="#paper">Read the Paper</a>
+                <a class="button is-link" href="#code">View Code</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="paper" class="section">
+        <div class="container">
+            <h2 class="title">Abstract</h2>
+            <p>This project investigates a novel approach to multimodal grounding and tracking for aerial objects. Our method enables users to click on an object in an aerial image and generate a textual description while tracking it across frames.</p>
+        </div>
+    </section>
+
+    <section id="code" class="section">
+        <div class="container">
+            <h2 class="title">Code and Data</h2>
+            <p>Find our implementation and dataset on GitHub.</p>
+            <a class="button is-dark" href="https://github.com/RupanjaliKukal/Click-Describe-Multimodal-Grounding-and-Tracking-for-Aerial-Objects"><i class="fab fa-github"></i> GitHub Repository</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="title">Demo</h2>
+            <p>Click on an object in the image to describe and track it.</p>
+            <input type="file" id="upload" accept="image/*">
+            <br><br>
+            <canvas id="canvas"></canvas>
+        </div>
+    </section>
+
     <script>
         const upload = document.getElementById("upload");
         const canvas = document.getElementById("canvas");
@@ -50,4 +80,3 @@
     </script>
 </body>
 </html>
-
