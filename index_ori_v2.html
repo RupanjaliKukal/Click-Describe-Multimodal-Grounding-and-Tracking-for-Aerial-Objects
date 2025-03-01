@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click-Describe: Multimodal Grounding and Tracking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; color: white; background-color: black; }
+        .hero {
+            background: url('your_background_image.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .container img { max-width: 100%; height: auto; }
+        .authors { margin-top: 2rem; }
+        .authors img { width: 100px; border-radius: 50%; margin: 10px; }
+        .content-section { padding: 3rem 0; color: black; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Click-Describe: Multimodal Grounding and Tracking</h1>
+            <p class="hero-subtitle">A research project on aerial object grounding and tracking</p>
+            <a class="button is-light" href="#paper">Read the Paper</a>
+            <a class="button is-primary" href="#code">View Code</a>
+        </div>
+    </section>
+
+    <section id="authors" class="content-section">
+        <div class="container has-text-centered">
+            <h2 class="title">Authors</h2>
+            <p>Rupanjali Kukal, Collaborators...</p>
+        </div>
+    </section>
+
+    <section id="paper" class="content-section">
+        <div class="container">
+            <h2 class="title">Abstract</h2>
+            <p>This project investigates a novel approach to multimodal grounding and tracking for aerial objects...</p>
+        </div>
+    </section>
+
+    <section id="video" class="content-section has-text-centered">
+        <div class="container">
+            <h2 class="title">Project Video</h2>
+            <video width="80%" controls>
+                <source src="your_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section id="code" class="content-section">
+        <div class="container has-text-centered">
+            <h2 class="title">Code and Data</h2>
+            <p>Find our implementation and dataset on GitHub.</p>
+            <a class="button is-dark" href="https://github.com/RupanjaliKukal/Click-Describe-Multimodal-Grounding-and-Tracking-for-Aerial-Objects"><i class="fab fa-github"></i> GitHub Repository</a>
+        </div>
+    </section>
+
+    <section id="demo" class="content-section">
+        <div class="container has-text-centered">
+            <h2 class="title">Demo</h2>
+            <p>Click on an object in the image to describe and track it.</p>
+            <input type="file" id="upload" accept="image/*">
+            <br><br>
+            <canvas id="canvas"></canvas>
+        </div>
+    </section>
+
+    <script>
+        const upload = document.getElementById("upload");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        upload.addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        canvas.width = img.width / 2;
+                        canvas.height = img.height / 2;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    }
+                    img.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        canvas.addEventListener("click", function(event) {
+            const x = event.offsetX;
+            const y = event.offsetY;
+            alert(`Clicked at (${x}, ${y}). Implement description & tracking here.`);
+        });
+    </script>
+</body>
+</html>
+
